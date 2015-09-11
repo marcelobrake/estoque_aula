@@ -1,0 +1,15 @@
+{
+    "name": "marcelobrake/estoque-aula",
+    "description": "Descrição do projeto Estoque Aula.",
+    "authors": [
+        {
+            "name": "Marcelo Divaldo Brake",
+            "email": "contato@marcelobrake.com.br"
+        }
+    ],
+    "require": {
+        "slim/slim": "2.6.2",
+        "monolog/monolog": "1.17.1",
+        "fzaninotto/faker": "v1.5.0"
+    }
+}
