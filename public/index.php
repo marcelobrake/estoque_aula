@@ -28,7 +28,7 @@ $app->container->singleton("log", function (){
 
 $app->get("/", function () use($app) {
     echo "Pagina inicial";
-
+    //teste
     // usa a DI criada par log
     $logger = $app->log;
     //grava uma entrada do tipo INFO no arquivo de log
