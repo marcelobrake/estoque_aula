@@ -48,7 +48,7 @@ $app->get("/teste/:nome", function ($nome) use($app) {
 });
 
 $app->post("/teste", function() use($app){
-    echo "Outro Teste";
+    echo "Outro Teste 2";
 });
 
 $app->run();
