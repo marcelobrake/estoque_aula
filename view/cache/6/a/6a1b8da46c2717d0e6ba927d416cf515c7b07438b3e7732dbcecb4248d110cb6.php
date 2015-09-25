@@ -29,14 +29,6 @@ class __TwigTemplate_13c702e8927c4338274b1842ef87b338539d2c2d47147b1b879c6a614ee
     {
         // line 4
         echo "
-<h1>";
-        // line 5
-        echo twig_escape_filter($this->env, (isset($context["mensagem"]) ? $context["mensagem"] : null), "html", null, true);
-        echo "</h1>
-
-<br/>
-<img src=\"http://www.unifafibe.com.br/banner_menor/banner_Egressos.jpg\" />
-
 ";
     }
 
@@ -52,16 +44,11 @@ class __TwigTemplate_13c702e8927c4338274b1842ef87b338539d2c2d47147b1b879c6a614ee
 
     public function getDebugInfo()
     {
-        return array (  34 => 5,  31 => 4,  28 => 3,  11 => 1,);
+        return array (  31 => 4,  28 => 3,  11 => 1,);
     }
 }
 /* {% extends "layout.html" %}*/
 /* */
 /* {% block content %}*/
 /* */
-/* <h1>{{mensagem}}</h1>*/
-/* */
-/* <br/>*/
-/* <img src="http://www.unifafibe.com.br/banner_menor/banner_Egressos.jpg" />*/
-/* */
-/* {% endblock content %}*/
+/* {% endblock %}*/

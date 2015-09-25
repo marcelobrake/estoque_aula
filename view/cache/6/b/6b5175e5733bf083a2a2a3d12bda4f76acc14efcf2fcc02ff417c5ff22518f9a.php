@@ -18,31 +18,37 @@ class __TwigTemplate_89232a90b59e57c475d7a4d0b08d14c197115ca1a7a44ac24d0d374a22e
     {
         // line 1
         echo "<!DOCTYPE html>
-<html>
+<html lang=\"br\">
     <head>
+        <meta charset=\"utf-8\">
+        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+        <meta name=\"description\" content=\"Exemplo de Aula\">
+        <meta name=\"author\" content=\"";
+        // line 8
+        echo twig_escape_filter($this->env, (isset($context["autor"]) ? $context["autor"] : null), "html", null, true);
+        echo "\">
         <title>";
-        // line 4
+        // line 9
         echo twig_escape_filter($this->env, (isset($context["titulo"]) ? $context["titulo"] : null), "html", null, true);
         echo "</title>
-        <meta charset=\"UTF-8\">
-        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     </head>
     <body>
-        <div>
-            ";
-        // line 10
+        ";
+        // line 12
         $this->displayBlock('content', $context, $blocks);
-        // line 11
-        echo "        </div>
-    </body>
+        // line 15
+        echo "    </body>
 </html>
 ";
     }
 
-    // line 10
+    // line 12
     public function block_content($context, array $blocks = array())
     {
-        echo " ";
+        // line 13
+        echo "
+        ";
     }
 
     public function getTemplateName()
@@ -57,20 +63,23 @@ class __TwigTemplate_89232a90b59e57c475d7a4d0b08d14c197115ca1a7a44ac24d0d374a22e
 
     public function getDebugInfo()
     {
-        return array (  43 => 10,  36 => 11,  34 => 10,  25 => 4,  20 => 1,);
+        return array (  50 => 13,  47 => 12,  41 => 15,  39 => 12,  33 => 9,  29 => 8,  20 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
-/* <html>*/
+/* <html lang="br">*/
 /*     <head>*/
+/*         <meta charset="utf-8">*/
+/*         <meta http-equiv="X-UA-Compatible" content="IE=edge">*/
+/*         <meta name="viewport" content="width=device-width, initial-scale=1">*/
+/*         <meta name="description" content="Exemplo de Aula">*/
+/*         <meta name="author" content="{{autor}}">*/
 /*         <title>{{titulo}}</title>*/
-/*         <meta charset="UTF-8">*/
-/*         <meta name="viewport" content="width=device-width, initial-scale=1.0">*/
 /*     </head>*/
 /*     <body>*/
-/*         <div>*/
-/*             {% block content %} {% endblock %}*/
-/*         </div>*/
+/*         {% block content %}*/
+/* */
+/*         {% endblock %}*/
 /*     </body>*/
 /* </html>*/
 /* */

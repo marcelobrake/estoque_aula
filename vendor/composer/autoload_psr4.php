@@ -7,6 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Slim\\Views\\' => array($vendorDir . '/slim/views'),
+    'Slim\\PDO\\' => array($vendorDir . '/slim/pdo/src/PDO'),
+    'PhpDocReader\\' => array($vendorDir . '/php-di/phpdoc-reader/src/PhpDocReader'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'Invoker\\' => array($vendorDir . '/php-di/invoker/src'),
+    'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
+    'DI\\' => array($vendorDir . '/mnapoli/php-di/src/DI'),
 );

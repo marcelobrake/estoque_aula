@@ -11,6 +11,7 @@
         "slim/slim": "2.6.2",
         "monolog/monolog": "1.17.1",
         "fzaninotto/faker": "v1.5.0",
-        "slim/slim-skeleton": "2.1.2"
+        "slim/slim-skeleton": "2.1.2",
+        "slim/pdo": "1.8.0"
     }
 }
