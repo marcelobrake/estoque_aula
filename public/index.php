@@ -42,4 +42,13 @@ $app->get("/", function () use($app) {
     $app->render("index.html", $data, $status);
 });
 
+$app->get("/teste", function() use($app){
+    try {
+        $conn = $app->conn;
+        var_dump($conn);
+    } catch (PDOException $ex) {
+        var_dump($ex);
+    }
+});
+
 $app->run();
