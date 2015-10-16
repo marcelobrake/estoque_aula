@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="thumbnail">
+
+
+    <div class="well">
+
+        <div class="text-right">
+            <a class="btn btn-success" href="/add/usuario">Cadastrar</a>
+        </div>
+        <hr>
+
+        {% for user in lista %}
+
+        <div class="row">
+            <div class="col-md-12">
+                <a href="/usuario/{{ user.id }}">{{ user.nome }}</a>
+                <span class="pull-right"><a href="mailto:{{ user.email }}">{{ user.email }}</a></span>
+            </div>
+        </div>
+
+        <hr>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+{% endblock %}

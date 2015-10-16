@@ -2,4 +2,20 @@
 
 {% block content %}
 
+<div class="thumbnail">
+    <img class="img-responsive" src="imgs/img800x300.gif" alt="">
+    <div class="caption-full">
+        <h4><a href="#">Desenvolvimento Web</a>
+        </h4>
+        <p>Exemplo de aula sobre Desenvolvimento Web com Slim Framework</p>
+        <p>{{user}}</p>
+
+        <form method="post" action="/usuario/popular">
+            Qtde de Registros: <input type="number" max="1000" min="0" name="qtde" id="qtde"/>
+            <button type="submit">Criar Usuarios</button>
+        </form>
+    </div>
+
+</div>
+
 {% endblock %}

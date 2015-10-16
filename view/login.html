@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<form action="/entrar" method="POST">
+  <p>Email: <input type="text" name="email" id="email" value="{{ email_value }}" /></p>
+  <p>Senha: <input type="password" name="password" id="password" /> </p>
+  <p><input type="submit" value="Entrar" />
+</form>
+
+{% if email_error %}
+<p class="alert-danger">
+    {{ email_error }}
+</p>
+{% endif %}
+
+{% if urlRedirect %}
+<p class="small">(Voc&ecirc; ser&aacute; redirecionando para  {{ urlRedirect }} ap&oacute;s o login)</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="thumbnail">
+    <form action="{% if new %} /add/usuario {% else %} /usuario {% endif %}" method="post">
+        ID#: <input type="hidden" value="{{ usuario.id }}" name="id" id="id"/>{{ usuario.id }}<br/>
+        NOME: <input type="text" value="{{ usuario.nome }}" name="nome" id="nome"/><br/>
+        EMAIL: <input type="email" value="{{ usuario.email }}" name="email" id="email"/><br/> 
+        {% if new %}
+        SENHA: <input type="password"  name="senha" id="senha"/><br/>
+        {% endif %}
+        ATIVO: <input type="radio" id="ativo" name="ativo" value="1" {% if usuario.ativo == 1 %} checked="checked" {% endif %} /> SIM 
+                      <input type="radio" id="ativo" name="ativo" value="0" {% if usuario.ativo == 0 %} checked="checked" {% endif %} /> N&Atilde;O <br/>           
+        ADMINISTRADOR: <input type="radio" id="administrador" name="administrador" value="1" {% if usuario.administrador == 1 %} checked="checked" {% endif %} /> SIM 
+                              <input type="radio" id="administrador" name="administrador" value="0" {% if usuario.administrador == 0 %} checked="checked" {% endif %} /> N&Atilde;O <br/>   
+        <button type="sumit" name="salvar" id="salvar">Salvar</button>
+    </form>
+</div>
+
+{% endblock %}

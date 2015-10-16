@@ -1,9 +1,9 @@
 <?php
 
 require_once '../vendor/autoload.php';
+require_once '../autoloader.php';
 
 $app = new Slim\Slim(array('templates.path' => "../view"));
-
 
 $app->view(new \Slim\Views\Twig());
 $app->view->parserOptions = array(
@@ -11,7 +11,8 @@ $app->view->parserOptions = array(
     'cache' => realpath('../view/cache'),
     'auto_reload' => true,
     'strict_variables' => false,
-    'autoescape' => true
+    'autoescape' => true,
+    'debug' => true,
 );
 $app->view->parserExtensions = array(new \Slim\Views\TwigExtension());
 
@@ -25,30 +26,35 @@ $app->container->singleton("log", function () {
     $logger->pushHandler(new Monolog\Handler\StreamHandler("../logs/acessos.log"));
     return $logger;
 });
+$app->container->singleton("conn", "conexao");
 
-$app->container->singleton("conn", function() {
-    $dsn = "mysql:host=localhost;dbname=estoque";
-    $usr = "estoque";
-    $pwd = "estoque";
-    $conn = new Slim\PDO\Database($dsn, $usr, $pwd);
-    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-    return $conn;
+$app->container->singleton('data', function () use ($app) {
+    $data = new Estoque\Controller\EstoqueData($app->conn, $app->log);
+    return $data->getData();
 });
 
+include '../controller/autenticacao.php';
+
 $app->get("/", function () use($app) {
-    //$logger = $app->log;
+    $data = $app->data;
     $status = 200;
-    $data = array('titulo' => 'Controle Estoque v1.0');
     $app->render("index.html", $data, $status);
 });
 
-$app->get("/teste", function() use($app){
-    try {
-        $conn = $app->conn;
-        var_dump($conn);
-    } catch (PDOException $ex) {
-        var_dump($ex);
-    }
+include '../config/usuario.php';
+include '../config/cliente.php';
+include '../config/fornecedor.php';
+include '../config/produto.php';
+include '../config/compra.php';
+include '../config/venda.php';
+
+$app->notFound(function () use ($app) {
+    $data = $app->data;
+    $status = 404;
+    $app->render('404.html', $data, $status);
 });
+
+
+
 
 $app->run();

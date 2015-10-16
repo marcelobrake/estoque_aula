@@ -2,6 +2,8 @@
 
 namespace Estoque\Model;
 
+require_once '../autoloader.php';
+
 /**
  * Classe Usuario, utilizada para manipular os dados do objeto Usuario()
  *
@@ -10,6 +12,7 @@ namespace Estoque\Model;
  */
 class Usuario
 {
+
     private $id;
     private $nome;
     private $email;
@@ -18,16 +21,16 @@ class Usuario
     private $ativo;
     protected $conn;
     protected $logger;
-    
-    public function __construct($conn, $logger)
+
+    public function __construct($conn = \PDO::class, $logger = \Monolog\Logger::class)
     {
         $this->conn = $conn;
         $this->logger = $logger;
     }
-    
-    public function __get($name)
+
+    public function &__get($name)
     {
-        switch ($name){
+        switch ($name) {
             case 'id':
                 return $this->id;
                 break;
@@ -47,45 +50,41 @@ class Usuario
                 return $this->ativo;
                 break;
             default :
-                $this->logger->addError("Atributo $name tentou ser acessado.");
-                throw new Exception("Atributo $name inexistente.");
+                $this->logger->addError("Tentativa de acesso ao atributo $name.");
+                throw new \Exception("Atributo $name inexistente.");
         }
     }
-    
+
     public function __set($name, $value)
     {
-        switch ($name){
+        switch ($name) {
             case 'id' :
                 $this->id = intval($value);
                 break;
             case 'nome':
-                $this->nome = strtoupper($value);
+                $this->nome = mb_strtoupper(filter_var($value, FILTER_SANITIZE_STRING));
                 break;
             case 'email':
-                $this->email = strtolower($value);
+                $this->email = strtolower(filter_var($value, FILTER_SANITIZE_EMAIL));
                 break;
             case 'senha':
-                $this->senha = $value;  //@TODO: vamos alterar depois para sanitizar a entrada
+                $this->senha = filter_var($value, FILTER_SANITIZE_STRING);
                 break;
             case 'administrador':
-                $this->administrador = boolval($value);
+                $this->administrador = intval($value);
                 break;
             case 'ativo':
-                $this->ativo = boolval($value);
+                $this->ativo = intval($value);
                 break;
             default :
-                $this->logger->addError("Tentativa de acesso no atributo $name");
-                throw new Exception("Atributo $name inexistente.");
+                $this->logger->addError("Tentativa de carga ao atributo $name.");
+                throw new \Exception("Atributo $name inexistente.");
         }
     }
-    
-    /**
-     * Busca no banco de dados todos os valores referentes ao usuario com o #ID informado
-     * @param int $id #ID do usuario
-     * @return \Estoque\Model\Usuario
-     */
-    public function load($id){
-        
-        return $this;
+
+    public function toArray()
+    {
+        return get_object_vars($this);
     }
+
 }

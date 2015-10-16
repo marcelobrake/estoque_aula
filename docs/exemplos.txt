@@ -1,0 +1,17 @@
+$app->get("/addUser", function () use($app){
+    require_once '../model/Usuario.php';
+    $usr = new Estoque\Model\Usuario($app->conn, $app->log);
+    $usr->nome = "MArcelo";
+    $usr->email = "contato@marcelobrake.com.br";
+    $usr->senha = "asdfg";
+    $usr->ativo = true;
+    $usr->administrador = true;
+    var_dump($usr->create());
+});
+
+$app->get("/getUser/:id", function ($id) use($app){
+    require_once '../model/Usuario.php';
+    $usr = new Estoque\Model\Usuario($app->conn, $app->log);
+    $usr->load($id);
+    var_dump($usr);
+});
