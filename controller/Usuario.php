@@ -66,7 +66,7 @@ class Usuario
 
         public function loadByEmail($email)
     {
-        $sql = "SELECT id, nome, email, senha, administrador, ativo FROM usuario WHERE email = :email";
+        $sql = "SELECT id, nome, email, senha, administrador, ativo FROM usuario WHERE email = :email AND ativo = 1";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(":email", $email, \PDO::PARAM_STR);
         $stmt->execute();
