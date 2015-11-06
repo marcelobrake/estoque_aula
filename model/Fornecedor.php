@@ -64,13 +64,13 @@ class Fornecedor
                 $this->razaoSocial = mb_strtoupper(filter_var($value, FILTER_SANITIZE_STRING));
                 break;
             case 'nomeFantasia':
-                $this->nomeFantasia = mb_strtoupper(filter_var($value, FILTER_SANITIZE_EMAIL));
+                $this->nomeFantasia = mb_strtoupper(filter_var($value, FILTER_SANITIZE_STRING));
                 break;
             case 'cnpj':
-                $this->cnpj = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+                $this->cnpj = floatval($value);
                 break;
             case 'ie':
-                $this->ie = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+                $this->ie = floatval($value);
                 break;
             case 'ativo':
                 $this->ativo = intval($value);

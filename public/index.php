@@ -55,6 +55,22 @@ $app->notFound(function () use ($app) {
 });
 
 
+$app->get('/test', function () use ($app) {
+    $fornecedor = new \Estoque\Controller\Fornecedor($app->conn, $app->log);
+    $objFornecedor = new Estoque\Model\Fornecedor($app->conn, $app->log);
+
+    $objFornecedor->razaoSocial = "TESTE 3";
+    $objFornecedor->nomeFantasia = "Teste  3   teste 3";
+    $objFornecedor->cnpj = 7623483000121;
+    $objFornecedor->ie = 7623483000121;
+    $objFornecedor->ativo = 1;
+    
+    var_dump($objFornecedor);
+    //$fornecedor->create($objFornecedor);
+    
+    
+});
+
 
 
 $app->run();

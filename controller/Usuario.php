@@ -1,5 +1,4 @@
 <?php
-
 namespace Estoque\Controller;
 
 require_once '../autoloader.php';
@@ -7,7 +6,7 @@ require_once '../autoloader.php';
 /**
  * Description of Usuario
  *
- * @author Marcelo
+ * @author Marcelo Divaldo Brake <contato at marcelobrake dot com dot br>
  */
 class Usuario
 {
